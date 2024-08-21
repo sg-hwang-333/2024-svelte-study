@@ -4,6 +4,24 @@
   function addToCart(productId) {
     cart = [...cart, productId];
   }
+
+  let relatedProducts = [
+    {
+      id: "react-book",
+      name: 'React Book',
+      price: 30000
+    },
+    {
+      id: "vue-book",
+      name: 'Vue Book',
+      price: 30000
+    },
+    {
+      id: "angular-book",
+      name: 'Angular Book',
+      price: 30000
+    }
+  ]
 </script>
 
 <header class="header">
@@ -43,9 +61,9 @@
   <footer>
     <h3>관련상품</h3>
     <ul>
-      <li><a href="/products/react-book">React-book</a> - 30,000원</li>
-      <li><a href="/products/vue-book">Vue-book</a> - 30,000원</li>
-      <li><a href="/products/angular-book">Angular-book</a> - 30,000원</li>
+      {#each relatedProducts as product}
+        <li><a href="/products/{[product.id]}">{product.name}</a> - {product.price}원</li>
+      {/each}
     </ul>
   </footer>
 </article>
