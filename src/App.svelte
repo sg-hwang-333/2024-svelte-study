@@ -5,6 +5,12 @@
     cart = [...cart, productId];
   }
 
+  let product= {
+    id: 'svelte-book',
+    name: 'Svelte Guide',
+    price: 30000
+  }
+
   let relatedProducts = [
     {
       id: "react-book",
@@ -43,16 +49,16 @@
     </div>
 
     <div>
-      <h2>Svelte Guide</h2>
+      <h2>{product.name}</h2>
       <dl>
         <dt>금액</dt>
-        <dd>30,000원</dd>
+        <dd>{product.price}원</dd>
       </dl>
       <div>
-        { #if !cart.includes('svelte-book') }
-          <button on:click={() => addToCart('svelte-book')}>장바구니 담기</button>
+        { #if !cart.includes(product.id) }
+          <button on:click={() => addToCart(product.id)}>장바구니 담기</button>
         { :else }
-          <button>장바구니 담기 완료</button> 
+          <button disabled>장바구니 담기 완료</button> 
         { /if } 
       </div>
     </div>
