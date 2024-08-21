@@ -1,5 +1,7 @@
 <script>
   import Slider from "./Slider.svelte";
+  import SvelteLogo from "./SvelteLogo.svelte";
+
   let cart = [];
 
   function addToCart(productId) {
@@ -80,6 +82,9 @@
   </footer>
 </article>
 
+<!-- <div>Svelte Logo 이미지 삽입</div>
+<SvelteLogo/> -->
+
 <style>
   :global(body) {
     margin: 0 0;
@@ -123,9 +128,6 @@
   width: 100%;
   max-width: 400px;
   overflow: hidden;
- }
- .image-container img {
-  width: 100%;
  }
  footer > *{
   list-style: none;
