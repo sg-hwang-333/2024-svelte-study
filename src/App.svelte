@@ -1,4 +1,5 @@
 <script>
+  import Slider from "./Slider.svelte";
   let cart = [];
 
   function addToCart(productId) {
@@ -33,25 +34,6 @@
       price: 30000
     }
   ]
-
-  // 이미지 슬라이더를 위한 변수&함수 
-  let sliderCenterIndex = 0;
-  let sliderLeftIndex = product.images.length -1;
-  let sliderRightIndex = 1;
-
-  function sliderMoveLeft() {
-    const length = product.images.length;
-    sliderCenterIndex = (sliderCenterIndex - 1 + length) % length;
-    sliderLeftIndex = (sliderCenterIndex - 1 + length) % length;
-    sliderRightIndex = (sliderCenterIndex + 1) % length;
-  }
-
-  function sliderMoveRight() {
-    const length = product.images.length;
-    sliderCenterIndex = (sliderCenterIndex + 1) % length;
-    sliderLeftIndex = (sliderCenterIndex - 1 + length) % length;
-    sliderRightIndex = (sliderCenterIndex + 1) % length;
-  }
 </script>
 
 <header class="header">
@@ -69,13 +51,7 @@
 <article class="product">
   <div class="product-main">
     <div class="image-container">
-       <div class="slider">
-        <img src="{product.images[sliderLeftIndex]}" class="slider-item left" alt="">
-        <img src="{product.images[sliderCenterIndex]}" class="slider-item" alt="">
-        <img src="{product.images[sliderRightIndex]}" class="slider-item right" alt="">
-        <button class="slider-left-button" on:click={sliderMoveLeft}>◀</button>
-        <button class="slider-right-button" on:click={sliderMoveRight}>▶</button>
-       </div>
+      <Slider images={product.images} />
     </div>
 
     <div>
@@ -153,35 +129,5 @@
  }
  footer > *{
   list-style: none;
- }
-
- /* slider */
- .slider {
-  position: relative;
-  width: 80%;
-  margin: 0 10%;
- }
- .slider-item {
-  width: 100%;
- }
- .slider-item.left {
-  position: absolute;
-  top: 0;
-  right: 100%;
- }
- .slider-item.right {
-  position: absolute;
-  top: 0;
-  left: 100%;
- }
- .slider-left-button {
-  position: absolute;
-  top: 50%;
-  right: 100%;
- }
- .slider-right-button {
-  position: absolute;
-  top: 50%;
-  left: 100%;
  }
 </style>
