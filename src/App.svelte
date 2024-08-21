@@ -1,3 +1,7 @@
+<script>
+  let cart = [];
+</script>
+
 <header class="header">
   <a class="header-title" href="/">Svelte Site</a>
   <nav>
@@ -23,7 +27,11 @@
         <dd>30,000원</dd>
       </dl>
       <div>
-        <button>장바구니 담기</button>
+        { #if !cart.includes('svelte-book') }
+          <button>장바구니 담기</button>
+        { :else }
+          <button>장바구니 담기 완료</button> 
+        { /if } 
       </div>
     </div>
   </div>
